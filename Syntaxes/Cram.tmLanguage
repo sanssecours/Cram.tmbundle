@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>t</string>
+	</array>
+	<key>keyEquivalent</key>
+	<string>^~C</string>
+	<key>name</key>
+	<string>Cram</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>include</key>
+			<string>#command</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#output</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#comment</string>
+		</dict>
+	</array>
+	<key>repository</key>
+	<dict>
+		<key>command</key>
+		<dict>
+			<key>begin</key>
+			<string>^\ {2}(\$)\ </string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.command.cram</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Everything after a line that starts with two spaces, a `$` 
+                 sign and a single space is a shell command. Shell commands
+                 continue over multiple lines if we start the lines after the
+                 `$` sign with two spaces a `&gt;` sign and a space.</string>
+			<key>name</key>
+			<string>meta.command.cram</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.shell</string>
+				</dict>
+			</array>
+			<key>while</key>
+			<string>^\ {2}(&gt;)\ </string>
+		</dict>
+		<key>comment</key>
+		<dict>
+			<key>begin</key>
+			<string>^(?!\ {2})</string>
+			<key>comment</key>
+			<string>Every line that does start with two spaces contains a comment.
+                 We use `comment.block` here since `comment.line` would activate the command “Reformat Comment”.</string>
+			<key>end</key>
+			<string>\n</string>
+			<key>name</key>
+			<string>comment.block.cram</string>
+		</dict>
+		<key>output</key>
+		<dict>
+			<key>begin</key>
+			<string>^\ {2}</string>
+			<key>comment</key>
+			<string>A shell output starts with two spaces.</string>
+			<key>end</key>
+			<string>\n</string>
+			<key>name</key>
+			<string>meta.output.cram</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#output_glob</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#output_regex</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#output_no_eol</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#output_esc</string>
+				</dict>
+			</array>
+		</dict>
+		<key>output_esc</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>source.python#escaped_char</string>
+						</dict>
+					</array>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.type.cram</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>A line contains unprintable characters if it ends with the 
+                 marker (esc)`.</string>
+			<key>match</key>
+			<string>(.+)\ (\(esc\))</string>
+			<key>name</key>
+			<string>meta.output.unprintable.characters.cram</string>
+		</dict>
+		<key>output_glob</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>\\(\*|\?|\\)</string>
+							<key>name</key>
+							<string>constant.character.escape.glob.cram</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\*|\?</string>
+							<key>name</key>
+							<string>keyword.operator.glob.cram</string>
+						</dict>
+					</array>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.type.cram</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>A line contains glob syntax if it ends with the marker 
+                 ` (glob)`.</string>
+			<key>match</key>
+			<string>(.+)\ (\(glob\))</string>
+			<key>name</key>
+			<string>meta.output.glob.cram</string>
+		</dict>
+		<key>output_no_eol</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.type.cram</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>A line does not contain a line ending if it ends with the 
+                 marker ` (no-eol)`.</string>
+			<key>match</key>
+			<string>.+\ (\(no-eol\))</string>
+			<key>name</key>
+			<string>meta.output.no.eol.cram</string>
+		</dict>
+		<key>output_regex</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>string.regexp.cram</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>source.regexp.python</string>
+						</dict>
+					</array>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.type.cram</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>A line contains a regex if it ends with the marker ` (re)`.</string>
+			<key>match</key>
+			<string>(.+)\ (\(re\))</string>
+			<key>name</key>
+			<string>meta.output.regexp.cram</string>
+		</dict>
+	</dict>
+	<key>scopeName</key>
+	<string>source.cram</string>
+	<key>uuid</key>
+	<string>BF45022C-0130-4CB8-B885-7D8E707D2AB9</string>
+</dict>
+</plist>

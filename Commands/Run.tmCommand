@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveModifiedFiles</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+
+require ENV["TM_SUPPORT_PATH"] + "/lib/tm/executor"
+require ENV["TM_SUPPORT_PATH"] + "/lib/tm/save_current_document"
+
+TextMate.save_if_untitled('t')
+Dir.chdir(ENV['TM_PROJECT_DIRECTORY'] || File.dirname(ENV['TM_FILEPATH'].to_s))
+
+command = ["cram", "#{ENV["TM_FILEPATH"]}"]
+TextMate::Executor.run(command, verb: 'Testing',
+                       version_regex: /^.*\([Vv]ersion\ (.+)\)$(?:\n.*)*/,
+                       version_replace: 'Cram \1')</string>
+	<key>input</key>
+	<string>document</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>keyEquivalent</key>
+	<string>@r</string>
+	<key>name</key>
+	<string>Run</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>scope</key>
+	<string>source.cram</string>
+	<key>semanticClass</key>
+	<string>process.run.cram</string>
+	<key>uuid</key>
+	<string>8A8F1F49-48C2-4FD6-93F7-FC7A131C8956</string>
+	<key>version</key>
+	<integer>2</integer>
+</dict>
+</plist>
