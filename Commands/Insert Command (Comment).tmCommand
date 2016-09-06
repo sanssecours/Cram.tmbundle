@@ -24,7 +24,7 @@ print "  $ #{STDIN.read.strip}"
 	<key>outputLocation</key>
 	<string>replaceInput</string>
 	<key>scope</key>
-	<string>comment.block.cram</string>
+	<string>source.cram - meta.command - meta.output</string>
 	<key>uuid</key>
 	<string>0BD3BFF9-5F43-4DFE-9CEA-81BE9EC85D36</string>
 	<key>version</key>
