@@ -16,7 +16,7 @@ print "  $ #{STDIN.read.strip}"
 	<key>keyEquivalent</key>
 	<string></string>
 	<key>name</key>
-	<string>Enter Command (Comment)</string>
+	<string>Insert Command (Comment)</string>
 	<key>outputCaret</key>
 	<string>afterOutput</string>
 	<key>outputFormat</key>

@@ -8,7 +8,7 @@
 	<key>keyEquivalent</key>
 	<string></string>
 	<key>name</key>
-	<string>Enter Command (Output)</string>
+	<string>Insert Command (Output)</string>
 	<key>scope</key>
 	<string>meta.output.cram</string>
 	<key>uuid</key>
