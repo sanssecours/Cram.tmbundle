@@ -61,10 +61,10 @@
 			<key>begin</key>
 			<string>^(?!\ {2})</string>
 			<key>comment</key>
-			<string>Every line that does start with two spaces contains a comment.
-                 We use `comment.block` here since `comment.line` would activate the command “Reformat Comment”.</string>
+			<string>Every line that does not start with two spaces contains a 
+                 comment. We use `comment.block` here since `comment.line` would activate the command “Reformat Comment”.</string>
 			<key>end</key>
-			<string>\n</string>
+			<string>\n|\Z</string>
 			<key>name</key>
 			<string>comment.block.cram</string>
 		</dict>
@@ -73,7 +73,7 @@
 			<key>begin</key>
 			<string>^\ {2}</string>
 			<key>comment</key>
-			<string>A shell output starts with two spaces.</string>
+			<string>Shell output starts with two spaces.</string>
 			<key>end</key>
 			<string>\n</string>
 			<key>name</key>
