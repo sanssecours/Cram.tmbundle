@@ -7,16 +7,18 @@
 	<key>command</key>
 	<string>#!/usr/bin/ruby
 
-require ENV["TM_SUPPORT_PATH"] + "/lib/tm/executor"
-require ENV["TM_SUPPORT_PATH"] + "/lib/tm/save_current_document"
+require ENV['TM_SUPPORT_PATH'] + '/lib/tm/executor'
+require ENV['TM_SUPPORT_PATH'] + '/lib/tm/save_current_document'
 
 TextMate.save_if_untitled('t')
 Dir.chdir(ENV['TM_PROJECT_DIRECTORY'] || File.dirname(ENV['TM_FILEPATH'].to_s))
 
-command = ["cram", "#{ENV["TM_FILEPATH"]}"]
+command = ['cram', (ENV['TM_FILEPATH']).to_s]
+version_regex = /^.*\([Vv]ersion\ (.+)\)$(?:\n.*)*/
 TextMate::Executor.run(command, verb: 'Testing',
-                       version_regex: /^.*\([Vv]ersion\ (.+)\)$(?:\n.*)*/,
-                       version_replace: 'Cram \1')</string>
+                                version_regex: version_regex,
+                                version_replace: 'Cram \1')
+</string>
 	<key>input</key>
 	<string>document</string>
 	<key>inputFormat</key>
