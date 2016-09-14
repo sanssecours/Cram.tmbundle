@@ -7,7 +7,30 @@
 	<key>command</key>
 	<string>#!/usr/bin/ruby
 
-STDIN.read.each_line { |line| print(line.lstrip) }</string>
+# -- Imports -------------------------------------------------------------------
+
+require ENV['TM_SUPPORT_PATH'] + '/lib/escape'
+require ENV['TM_SUPPORT_PATH'] + '/lib/exit_codes'
+
+# -- Main ----------------------------------------------------------------------
+
+selection = ENV.key? 'TM_SELECTED_TEXT'
+input = STDIN.read
+
+input_to_check = input.lines[0..1][-1]
+uncommented = (input_to_check.nil? || input_to_check.start_with?('  '))
+
+input.insert(ENV['TM_LINE_INDEX'].to_i, "\0") unless selection
+input = e_sn(input)
+
+if selection
+  print('${0:')
+else
+  input.sub!(/^\s*\0\s*|\0/, '$0')
+end
+input.each_line { |line| print(uncommented ? line.lstrip : "  #{line}") }
+print('}') if selection
+</string>
 	<key>input</key>
 	<string>line</string>
 	<key>inputFormat</key>
@@ -17,9 +40,9 @@ STDIN.read.each_line { |line| print(line.lstrip) }</string>
 	<key>name</key>
 	<string>Comment Line / Selection</string>
 	<key>outputCaret</key>
-	<string>afterOutput</string>
+	<string>interpolateByLine</string>
 	<key>outputFormat</key>
-	<string>text</string>
+	<string>snippet</string>
 	<key>outputLocation</key>
 	<string>replaceInput</string>
 	<key>scope</key>
