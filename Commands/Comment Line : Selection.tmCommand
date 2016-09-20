@@ -9,30 +9,13 @@
 
 # -- Imports -------------------------------------------------------------------
 
-require ENV['TM_SUPPORT_PATH'] + '/lib/escape'
-require ENV['TM_SUPPORT_PATH'] + '/lib/exit_codes'
+require ENV['TM_BUNDLE_SUPPORT'] + '/lib/cram'
 
 # -- Main ----------------------------------------------------------------------
 
-selection = ENV.key? 'TM_SELECTED_TEXT'
-input = STDIN.read
-
-input_to_check = input.lines[0..1][-1]
-uncommented = (input_to_check.nil? || input_to_check.start_with?('  '))
-
-input.insert(ENV['TM_LINE_INDEX'].to_i, "\0") unless selection
-input = e_sn(input)
-
-if selection
-  print('${0:')
-else
-  input.sub!(/^\s*\0\s*|\0/, '$0')
-end
-input.each_line { |line| print(uncommented ? line.lstrip : "  #{line}") }
-print('}') if selection
-</string>
+print(Cram.toggle_comments_snippet)</string>
 	<key>input</key>
-	<string>line</string>
+	<string>document</string>
 	<key>inputFormat</key>
 	<string>text</string>
 	<key>keyEquivalent</key>
