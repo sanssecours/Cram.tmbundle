@@ -1,0 +1,6 @@
+{
+  "name": "Cram TextMate Bundle",
+  "tagline": "TextMate Support for the Cram Testing Framework",
+  "body": "# Cram Bundle\r\n\r\nThis [TextMate](https://github.com/textmate/textmate) bundle provides support for [Cram](https://bitheap.org/cram), a functional testing framework for command line applications.\r\n\r\n![Cram](https://raw.githubusercontent.com/sanssecours/Cram.tmbundle/master/Documentation/Cram.png)\r\n\r\nFor more information, please take a look at the [ReadMe](https://github.com/sanssecours/Cram.tmbundle/blob/master/ReadMe.md).",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
