@@ -33,6 +33,18 @@ TextMate::Executor.run(command, verb: 'Testing',
 	<string>html</string>
 	<key>outputLocation</key>
 	<string>newWindow</string>
+	<key>requiredCommands</key>
+	<array>
+		<dict>
+			<key>command</key>
+			<string>cram</string>
+			<key>locations</key>
+			<array>
+				<string>/usr/local/bin/cram</string>
+				<string>$HOME/.pyenv/shims/cram</string>
+			</array>
+		</dict>
+	</array>
 	<key>scope</key>
 	<string>source.cram</string>
 	<key>semanticClass</key>
