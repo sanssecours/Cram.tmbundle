@@ -1,10 +1,19 @@
-Lines that do not start with two spaces are comments.
+[Cram][] is a a functional testing framework for command line applications.
 
-Cram supports
+[Cram]: https://bitheap.org/cram
+
+To test a command just start a line with two spaces and a `$` sign. After that
+write down the command and start the next line with two spaces and the output
+you expect.
+
+  $ echo 'Hello, Cram.'
+  Hello, Cram.
+
+Cram also supports
 
 - glob patterns
 
-  $ echo "Hello World"
+  $ echo 'Hello 😘.'
   Hell? * (glob)
 
 - “unprintable” characters, and
@@ -24,3 +33,5 @@ with two spaces and a `>` sign.
   >   basename "$TM_FILENAME"
   > fi
   example.t
+
+To test the current file just press `⌘` + `R` inside TextMate.
