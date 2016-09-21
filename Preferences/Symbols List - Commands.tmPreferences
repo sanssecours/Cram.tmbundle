@@ -12,10 +12,12 @@
 		<integer>1</integer>
 		<key>symbolTransformation</key>
 		<string>
-    # Replace command continuation symbols
-    s/\ {2,}&gt;\ {1,}/ … /g; 
-    # Replace command start symbols
-    s/^\ {2}\$\ {1,}(.+)/🐚 $1/;
+    # Remove command start symbols
+    s/^\ {2}\$\ +(.+)/$1/;
+    # Indent command continuations
+    s/^\ {2,}&gt;\ + (.+)/  $1/;
+    # Replace repeated continuation symbols with whitespace
+    s/\ {2,}&gt;\ {1,}/ /g; 
   </string>
 	</dict>
 	<key>uuid</key>
