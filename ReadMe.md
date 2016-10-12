@@ -17,8 +17,8 @@ This [TextMate](https://github.com/textmate/textmate) bundle provides support fo
 ## Terminal
 
 ```sh
-mkdir -p "$HOME/Library/Application Support/Avian/Bundles"
-cd "$HOME/Library/Application Support/Avian/Bundles"
+mkdir -p "$HOME/Library/Application Support/TextMate/Bundles"
+cd "$HOME/Library/Application Support/TextMate/Bundles"
 git clone https://github.com/sanssecours/Cram.tmbundle
 ```
 
