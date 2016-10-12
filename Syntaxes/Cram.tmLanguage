@@ -120,7 +120,7 @@
 			</dict>
 			<key>comment</key>
 			<string>A line contains unprintable characters if it ends with the 
-                 marker (esc)`.</string>
+                 marker `(esc)`.</string>
 			<key>match</key>
 			<string>(.+)\ (\(esc\))</string>
 			<key>name</key>
@@ -156,7 +156,7 @@
 			</dict>
 			<key>comment</key>
 			<string>A line contains glob syntax if it ends with the marker 
-                 ` (glob)`.</string>
+                 `(glob)`.</string>
 			<key>match</key>
 			<string>(.+)\ (\(glob\))</string>
 			<key>name</key>
@@ -174,7 +174,7 @@
 			</dict>
 			<key>comment</key>
 			<string>A line does not contain a line ending if it ends with the 
-                 marker ` (no-eol)`.</string>
+                 marker `(no-eol)`.</string>
 			<key>match</key>
 			<string>.+\ (\(no-eol\))</string>
 			<key>name</key>
@@ -203,7 +203,7 @@
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>A line contains a regex if it ends with the marker ` (re)`.</string>
+			<string>A line contains a regex if it ends with the marker `(re)`.</string>
 			<key>match</key>
 			<string>(.+)\ (\(re\))</string>
 			<key>name</key>
