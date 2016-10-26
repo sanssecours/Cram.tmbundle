@@ -5,20 +5,11 @@
 	<key>name</key>
 	<string>Symbol List: Commands</string>
 	<key>scope</key>
-	<string>source.cram meta.command.cram</string>
+	<string>source.cram meta.command.first-line.cram</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
 		<integer>1</integer>
-		<key>symbolTransformation</key>
-		<string>
-    # Remove command start symbols
-    s/^\ {2}\$\ +(.+)/$1/;
-    # Indent command continuations
-    s/^\ {2,}&gt;\ + (.+)/  $1/;
-    # Replace repeated continuation symbols with whitespace
-    s/\ {2,}&gt;\ {1,}/ /g; 
-  </string>
 	</dict>
 	<key>uuid</key>
 	<string>5E7BF27A-74F5-4E73-AB0C-052816DA6344</string>
